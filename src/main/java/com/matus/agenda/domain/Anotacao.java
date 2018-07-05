@@ -1,34 +1,38 @@
 package com.matus.agenda.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Materia implements Serializable{
+public class Anotacao implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	private String nomeMateria;
+	private String nomeAnotacao;
 	
-	@OneToMany(mappedBy="materia")
-	private List<Anotacao> anotacoes = new ArrayList<>();
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="materia_id")
+	private Materia materia;
 	
-	public Materia() {
+	public Anotacao() {
 	}
 
-	public Materia(Integer id, String nomeMateria) {
+	public Anotacao(Integer id, String nomeAnotacao, Materia materia) {
 		super();
 		this.id = id;
-		this.nomeMateria = nomeMateria;
+		this.nomeAnotacao = nomeAnotacao;
+		this.materia = materia;
 	}
 
 	public Integer getId() {
@@ -39,22 +43,22 @@ public class Materia implements Serializable{
 		this.id = id;
 	}
 
-	public String getNomeMateria() {
-		return nomeMateria;
+	public String getNomeAnotacao() {
+		return nomeAnotacao;
 	}
 
-	public void setNomeMateria(String nomeMateria) {
-		this.nomeMateria = nomeMateria;
+	public void setNomeAnotacao(String nomeAnotacao) {
+		this.nomeAnotacao = nomeAnotacao;
 	}
 	
-	public List<Anotacao> getAnotacoes() {
-		return anotacoes;
+	public Materia getMateria() {
+		return materia;
 	}
 	
-	public void setAnotacoes(List<Anotacao> anotacoes) {
-		this.anotacoes = anotacoes;
+	public void setMateria(Materia materia) {
+		this.materia = materia;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -71,7 +75,7 @@ public class Materia implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Materia other = (Materia) obj;
+		Anotacao other = (Anotacao) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
