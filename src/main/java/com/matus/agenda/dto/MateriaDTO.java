@@ -2,12 +2,15 @@ package com.matus.agenda.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.matus.agenda.domain.Materia;
 
 public class MateriaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
+	@NotEmpty(message="Campo obrigatorio")
 	private String nomeMateria;
 
 	public MateriaDTO() {

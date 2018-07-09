@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.matus.agenda.domain.Materia;
+import com.matus.agenda.dto.MateriaDTO;
 import com.matus.agenda.repository.MateriaRepository;
 import com.matus.agenda.services.exceptions.DataIntegrityException;
 import com.matus.agenda.services.exceptions.ObjectNotFoundException;
@@ -54,5 +55,9 @@ public class MateriaService {
 		PageRequest pageRequest =  PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		
 		return materiaRepository.findAll(pageRequest);
+	}
+	
+	public Materia fromDTO(MateriaDTO objDTO) {
+		return new Materia(objDTO.getId(),objDTO.getNomeMateria());
 	}
 }
