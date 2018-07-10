@@ -10,8 +10,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.matus.agenda.domain.Anotacao;
 import com.matus.agenda.domain.Materia;
 import com.matus.agenda.dto.MateriaDTO;
+import com.matus.agenda.dto.MateriaNewDTO;
+import com.matus.agenda.repository.AnotacaoRepository;
 import com.matus.agenda.repository.MateriaRepository;
 import com.matus.agenda.services.exceptions.DataIntegrityException;
 import com.matus.agenda.services.exceptions.ObjectNotFoundException;
@@ -21,6 +24,9 @@ public class MateriaService {
 
 	@Autowired
 	private MateriaRepository materiaRepository;
+	
+	@Autowired
+	private AnotacaoRepository anotacaoRepository;
 
 	public Materia find(Integer id) {
 		Optional<Materia> obj = materiaRepository.findById(id);
@@ -30,7 +36,9 @@ public class MateriaService {
 
 	public Materia insert(Materia obj) {
 		obj.setId(null);
-		return materiaRepository.save(obj);
+		materiaRepository.save(obj);
+		anotacaoRepository.saveAll(obj.getAnotacoes());
+		return obj;
 	}
 
 	public Materia update(Materia obj) {
@@ -52,12 +60,19 @@ public class MateriaService {
 	}
 
 	public Page<Materia> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
-		PageRequest pageRequest =  PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
-		
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+
 		return materiaRepository.findAll(pageRequest);
 	}
-	
+
 	public Materia fromDTO(MateriaDTO objDTO) {
-		return new Materia(objDTO.getId(),objDTO.getNomeMateria());
+		return new Materia(objDTO.getId(), objDTO.getNomeMateria());
+	}
+
+	public Materia fromDTO(MateriaNewDTO objDTO) {
+		Materia mat = new Materia(null, objDTO.getNomeMateria());
+		Anotacao ano = new Anotacao(null, objDTO.getNomeAnotacao(), mat);
+		mat.getAnotacoes().add(ano);
+		return mat;
 	}
 }

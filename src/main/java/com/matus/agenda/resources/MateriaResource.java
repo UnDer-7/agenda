@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.matus.agenda.domain.Materia;
 import com.matus.agenda.dto.MateriaDTO;
+import com.matus.agenda.dto.MateriaNewDTO;
 import com.matus.agenda.services.MateriaService;
 
 @RestController
@@ -35,7 +36,7 @@ public class MateriaResource {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@Valid @RequestBody MateriaDTO objDTO){
+	public ResponseEntity<Void> insert(@Valid @RequestBody MateriaNewDTO objDTO){
 		Materia obj = materiaService.fromDTO(objDTO);
 		obj = materiaService.insert(obj);
 		
