@@ -4,11 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Materia implements Serializable{
@@ -19,7 +15,7 @@ public class Materia implements Serializable{
 	private Integer id;
 	private String nomeMateria;
 	
-	@OneToMany(mappedBy="materia")
+	@ManyToMany(mappedBy="materias")
 	private List<Anotacao> anotacoes = new ArrayList<>();
 	
 	public Materia() {

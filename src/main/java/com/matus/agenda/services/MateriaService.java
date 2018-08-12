@@ -1,5 +1,6 @@
 package com.matus.agenda.services;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,7 +72,7 @@ public class MateriaService {
 
 	public Materia fromDTO(MateriaNewDTO objDTO) {
 		Materia mat = new Materia(null, objDTO.getNomeMateria());
-		Anotacao ano = new Anotacao(null, objDTO.getNomeAnotacao(), mat);
+		Anotacao ano = new Anotacao(null, objDTO.getNomeAnotacao(), Arrays.asList(mat));
 		mat.getAnotacoes().add(ano);
 		return mat;
 	}

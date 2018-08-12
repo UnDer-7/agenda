@@ -1,5 +1,7 @@
 package com.matus.agenda.dto;
 
+import com.matus.agenda.domain.Anotacao;
+
 import java.io.Serializable;
 
 import javax.validation.constraints.NotEmpty;
@@ -18,6 +20,10 @@ public class AnotacaoDTO implements Serializable{
 		super();
 		this.id = id;
 		this.nomeAnotacao = nomeAnotacao;
+	}
+	public AnotacaoDTO(Anotacao obj){
+		this.id = obj.getId();
+		this.nomeAnotacao = obj.getNomeAnotacao();
 	}
 
 	public Integer getId() {

@@ -39,11 +39,11 @@ public class AgendaApplication implements CommandLineRunner{
 		Materia mat9 = new Materia(null, "Probabilidade e Estatística");
 		Materia mat10 = new Materia(null, "Algoritmos e Lógica de Programação");
 		
-		Anotacao ano1 = new Anotacao(null, "Trabalho dia 22/06 - Eng. II", mat1);
-		Anotacao ano2 = new Anotacao(null, "prova dia 05/02 - Eng. II", mat1);
-		Anotacao ano3 = new Anotacao(null, "Apresentação 11/11 - Eng. II, S.O.", mat1);
-		Anotacao ano4 = new Anotacao(null, "Apresentação 11/11 - Eng. II, S.O.", mat2);
-		Anotacao ano5 = new Anotacao(null, "Mini-Teste 09/06 - S.O.", mat2);		
+		Anotacao ano1 = new Anotacao(null, "Trabalho dia 22/06 - Eng. II", Arrays.asList(mat1));
+		Anotacao ano2 = new Anotacao(null, "prova dia 05/02 - Eng. II", Arrays.asList(mat1));
+		Anotacao ano3 = new Anotacao(null, "Apresentação 11/11 - Eng. II, S.O.", Arrays.asList(mat1));
+		Anotacao ano4 = new Anotacao(null, "Apresentação 11/11 - Eng. II, S.O.", Arrays.asList(mat2));
+		Anotacao ano5 = new Anotacao(null, "Mini-Teste 09/06 - S.O.", Arrays.asList(mat2));
 		
 		mat1.getAnotacoes().addAll(Arrays.asList(ano1,ano2,ano2,ano3));
 		mat2.getAnotacoes().addAll(Arrays.asList(ano4,ano5));
