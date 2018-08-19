@@ -7,6 +7,7 @@ import com.matus.agenda.dto.MateriaDTO;
 import com.matus.agenda.dto.MateriaNewDTO;
 import com.matus.agenda.services.AnotacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -39,7 +40,7 @@ public class AnotacaoResource {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Void> update(@Valid @RequestBody AnotacaoDTO objDTO, @PathVariable Integer id){
+    public ResponseEntity<Void> update(@Valid @RequestBody AnotacaoDTO objDTO, @PathVariable Integer id) {
         Anotacao obj = anotacaoService.fromDTO(objDTO);
         obj.setId(id);
         obj = anotacaoService.update(obj);
@@ -47,15 +48,29 @@ public class AnotacaoResource {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> delete(@PathVariable Integer id){
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
         anotacaoService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(method=RequestMethod.GET)
-    public ResponseEntity<List<AnotacaoDTO>> findAll(){
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<AnotacaoDTO>> findAll() {
         List<Anotacao> list = anotacaoService.findAll();
         List<AnotacaoDTO> listDTO = list.stream().map(obj -> new AnotacaoDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDTO);
+    }
+
+    @RequestMapping(value = "/page", method=RequestMethod.GET)
+    public ResponseEntity<Page<AnotacaoDTO>> findPage(
+//            anotacoes/page?page=0&linesPerPage = 20&order=prova dia 05/02 - Eng. II&direction=ASC
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage,
+            @RequestParam(value = "orderBy", defaultValue = "nomeAnotacao") String orderBy,
+            @RequestParam(value = "direction", defaultValue = "ASC") String direction) {
+
+        Page<Anotacao> list = anotacaoService.findPage(page, linesPerPage, orderBy, direction);
+        Page<AnotacaoDTO> listDTO = list.map(obj -> new AnotacaoDTO(obj));
+
         return ResponseEntity.ok().body(listDTO);
     }
 }

@@ -32,6 +32,12 @@ public class Anotacao implements Serializable {
         this.materias = materia;
     }
 
+    public Anotacao(Integer id, String nomeAnotacao) {
+        super();
+        this.id = id;
+        this.nomeAnotacao = nomeAnotacao;
+    }
+
     public Integer getId() {
         return id;
     }

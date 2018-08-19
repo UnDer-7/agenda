@@ -67,12 +67,13 @@ public class MateriaResource {
 	
 	@RequestMapping(value = "/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<MateriaDTO>> findPage(
+//			materias/page?page=0&linesPerPage = 20&order=LTP III&direction=ASC
 			@RequestParam(value="page", defaultValue="0") Integer page,
 			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage,
 			@RequestParam(value="orderBy", defaultValue="nomeMateria") String orderBy,
 			@RequestParam(value="direction", defaultValue="ASC") String direction) {
 		
-		Page<Materia> list = materiaService.findPage(page,linesPerPage,orderBy,direction);
+		Page<Materia> list = materiaService.findPage(page, linesPerPage, orderBy, direction);
 		Page<MateriaDTO> listDTO =  list.map(obj -> new MateriaDTO(obj));
 		
 		return ResponseEntity.ok().body(listDTO);
