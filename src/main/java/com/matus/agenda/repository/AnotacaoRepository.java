@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.matus.agenda.domain.Anotacao;
 
+import java.util.List;
+
 @Repository
 public interface AnotacaoRepository extends JpaRepository<Anotacao, Integer>{
-	
 }

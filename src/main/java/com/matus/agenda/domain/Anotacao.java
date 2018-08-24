@@ -86,4 +86,14 @@ public class Anotacao implements Serializable {
             return false;
         return true;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Anotacao{");
+        sb.append("id=").append(id);
+        sb.append(", nomeAnotacao='").append(nomeAnotacao).append('\'');
+        sb.append(", materias=").append(materias);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -28,11 +28,14 @@ public class DBService {
         Anotacao ano2 = new Anotacao(null, "prova dia 05/02 - Eng. II", Arrays.asList(mat1));
         Anotacao ano3 = new Anotacao(null, "Apresentação 11/11 - Eng. II, S.O.", Arrays.asList(mat1, mat3));
         Anotacao ano4 = new Anotacao(null, "Mini-Teste 09/06 - S.O.", Arrays.asList(mat3));
+        Anotacao ano5 = new Anotacao(null, "Consulta dia 21/08", null);
+        Anotacao ano6 = new Anotacao(null, "Pegar certificado TOEIC ", null);
+        Anotacao ano7 = new Anotacao(null, "Comprar Mangas", null);
 
         mat1.getAnotacoes().addAll(Arrays.asList(ano1,ano2,ano2,ano3));
         mat3.getAnotacoes().addAll(Arrays.asList(ano3,ano4));
 
         materiaRepository.saveAll(Arrays.asList(mat1,mat2,mat3,mat4));
-        anotacaoRepository.saveAll(Arrays.asList(ano1,ano2, ano3, ano4));
+        anotacaoRepository.saveAll(Arrays.asList(ano1,ano2, ano3, ano4, ano5, ano6, ano7));
     }
 }

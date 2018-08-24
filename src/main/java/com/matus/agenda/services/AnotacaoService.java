@@ -1,9 +1,7 @@
 package com.matus.agenda.services;
 
 import com.matus.agenda.domain.Anotacao;
-import com.matus.agenda.domain.Materia;
 import com.matus.agenda.dto.AnotacaoDTO;
-import com.matus.agenda.dto.MateriaDTO;
 import com.matus.agenda.repository.AnotacaoRepository;
 import com.matus.agenda.repository.MateriaRepository;
 import com.matus.agenda.services.exceptions.DataIntegrityException;
@@ -20,6 +18,7 @@ import java.util.Optional;
 
 @Service
 public class AnotacaoService {
+
     @Autowired
     private MateriaRepository materiaRepository;
 
@@ -63,6 +62,6 @@ public class AnotacaoService {
     }
 
     public Anotacao fromDTO(AnotacaoDTO objDTO) {
-        return new Anotacao(objDTO.getId(), objDTO.getNomeAnotacao(), null);
+        return new Anotacao(objDTO.getId(), objDTO.getNomeAnotacao(), objDTO.getMaterias());
     }
 }

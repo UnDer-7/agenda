@@ -1,8 +1,10 @@
 package com.matus.agenda.dto;
 
 import com.matus.agenda.domain.Anotacao;
+import com.matus.agenda.domain.Materia;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -12,6 +14,8 @@ public class AnotacaoDTO implements Serializable{
 	private Integer id;
 	@NotEmpty(message="Campo obrigatorio")
 	private String nomeAnotacao;
+
+	private List<Materia> materias;
 
 	public AnotacaoDTO() {
 	}
@@ -26,7 +30,15 @@ public class AnotacaoDTO implements Serializable{
 		this.nomeAnotacao = obj.getNomeAnotacao();
 	}
 
-	public Integer getId() {
+    public List<Materia> getMaterias() {
+        return materias;
+    }
+
+    public void setMaterias(List<Materia> materias) {
+        this.materias = materias;
+    }
+
+    public Integer getId() {
 		return id;
 	}
 
@@ -41,6 +53,20 @@ public class AnotacaoDTO implements Serializable{
 	public void setNomeAnotacao(String nomeAnotacao) {
 		this.nomeAnotacao = nomeAnotacao;
 	}
-	
-	
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("id: ");
+        sb.append(getId());
+        sb.append("\n");
+        sb.append("Nome Anotação: ");
+        sb.append(getNomeAnotacao());
+        sb.append("\n");
+        sb.append("Nome Materia: ");
+        for(int i = 0; i < materias.size(); i++){
+            sb.append(materias.get(i).getNomeMateria()+" --  ");
+        }
+        return sb.toString();
+    }
 }

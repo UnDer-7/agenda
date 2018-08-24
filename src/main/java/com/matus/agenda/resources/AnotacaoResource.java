@@ -1,10 +1,7 @@
 package com.matus.agenda.resources;
 
 import com.matus.agenda.domain.Anotacao;
-import com.matus.agenda.domain.Materia;
 import com.matus.agenda.dto.AnotacaoDTO;
-import com.matus.agenda.dto.MateriaDTO;
-import com.matus.agenda.dto.MateriaNewDTO;
 import com.matus.agenda.services.AnotacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,9 +28,23 @@ public class AnotacaoResource {
     }
 
     @RequestMapping(method = RequestMethod.POST)
+    /**
+     * -----------JSON OBJECT-----------
+    {
+        "nomeAnotacao" : "FILHA DA PUTA",
+            "materias" : [
+        {
+            "id": 1
+        },
+        {
+            "id": 3
+        }
+		]
+    }
+    */
     public ResponseEntity<Void> insert(@Valid @RequestBody AnotacaoDTO objDTO) {
         Anotacao obj = anotacaoService.fromDTO(objDTO);
-        obj = anotacaoService.insert(obj);
+        anotacaoService.insert(obj);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
