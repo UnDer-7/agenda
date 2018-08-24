@@ -25,7 +25,7 @@ public class MateriaService {
 
 	@Autowired
 	private MateriaRepository materiaRepository;
-	
+
 	@Autowired
 	private AnotacaoRepository anotacaoRepository;
 

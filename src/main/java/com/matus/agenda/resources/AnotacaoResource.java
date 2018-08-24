@@ -65,10 +65,10 @@ public class AnotacaoResource {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<AnotacaoDTO>> findAll() {
+    public ResponseEntity<List<Anotacao>> findAll() {
         List<Anotacao> list = anotacaoService.findAll();
-        List<AnotacaoDTO> listDTO = list.stream().map(obj -> new AnotacaoDTO(obj)).collect(Collectors.toList());
-        return ResponseEntity.ok().body(listDTO);
+//        List<AnotacaoDTO> listDTO = list.stream().map(obj -> new AnotacaoDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(list);
     }
 
     @RequestMapping(value = "/page", method=RequestMethod.GET)
