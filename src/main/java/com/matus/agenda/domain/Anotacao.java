@@ -22,6 +22,10 @@ public class Anotacao implements Serializable {
     joinColumns = @JoinColumn(name = "anotacao_id"), inverseJoinColumns = @JoinColumn(name = "materia_id"))
     private List<Materia> materias;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
     public Anotacao() {
     }
 
@@ -32,10 +36,12 @@ public class Anotacao implements Serializable {
         this.materias = materia;
     }
 
-    public Anotacao(Integer id, String nomeAnotacao) {
+    public Anotacao(Integer id, String nomeAnotacao, List<Materia> materia, Usuario usuario) {
         super();
         this.id = id;
         this.nomeAnotacao = nomeAnotacao;
+        this.materias = materia;
+        this.usuario = usuario;
     }
 
     public Integer getId() {

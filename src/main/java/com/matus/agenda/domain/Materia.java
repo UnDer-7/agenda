@@ -1,5 +1,7 @@
 package com.matus.agenda.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,20 +16,37 @@ public class Materia implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nomeMateria;
-	
+
 	@ManyToMany(mappedBy="materias")
 	private List<Anotacao> anotacoes = new ArrayList<>();
-	
+
+	@ManyToOne
+    @JoinColumn(name = "usuario_id")
+	private Usuario usuario;
+
 	public Materia() {
 	}
 
-	public Materia(Integer id, String nomeMateria) {
-		super();
+	public Materia(Integer id, String nomeMateria, Usuario usuario) {
 		this.id = id;
 		this.nomeMateria = nomeMateria;
+		this.usuario = usuario;
 	}
 
-	public Integer getId() {
+    public Materia(Integer id, String nomeMateria) {
+        this.id = id;
+        this.nomeMateria = nomeMateria;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Integer getId() {
 		return id;
 	}
 
