@@ -20,6 +20,7 @@ public class Materia implements Serializable{
 	@ManyToMany(mappedBy="materias")
 	private List<Anotacao> anotacoes = new ArrayList<>();
 
+	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name = "usuario_id")
 	private Usuario usuario;
@@ -32,11 +33,6 @@ public class Materia implements Serializable{
 		this.nomeMateria = nomeMateria;
 		this.usuario = usuario;
 	}
-
-    public Materia(Integer id, String nomeMateria) {
-        this.id = id;
-        this.nomeMateria = nomeMateria;
-    }
 
     public Usuario getUsuario() {
         return usuario;

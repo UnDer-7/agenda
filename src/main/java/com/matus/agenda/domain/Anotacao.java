@@ -29,13 +29,6 @@ public class Anotacao implements Serializable {
     public Anotacao() {
     }
 
-    public Anotacao(Integer id, String nomeAnotacao, List<Materia> materia) {
-        super();
-        this.id = id;
-        this.nomeAnotacao = nomeAnotacao;
-        this.materias = materia;
-    }
-
     public Anotacao(Integer id, String nomeAnotacao, List<Materia> materia, Usuario usuario) {
         super();
         this.id = id;

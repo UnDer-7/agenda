@@ -1,9 +1,12 @@
 package com.matus.agenda.services;
 
 import com.matus.agenda.domain.Anotacao;
-import com.matus.agenda.dto.AnotacaoDTO;
+import com.matus.agenda.domain.Materia;
+import com.matus.agenda.domain.Usuario;
+import com.matus.agenda.dto.AnotacaoNewDTO;
 import com.matus.agenda.repository.AnotacaoRepository;
 import com.matus.agenda.repository.MateriaRepository;
+import com.matus.agenda.security.UserSS;
 import com.matus.agenda.services.exceptions.DataIntegrityException;
 import com.matus.agenda.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +25,9 @@ public class AnotacaoService {
 
     @Autowired
     private MateriaRepository materiaRepository;
+
+    @Autowired
+    private UsuarioService usuarioService;
 
     @Autowired
     private AnotacaoRepository anotacaoRepository;
@@ -33,6 +40,8 @@ public class AnotacaoService {
 
     public Anotacao insert(Anotacao obj) {
         obj.setId(null);
+//        materiaRepository.saveAll(obj.getMaterias());
+//        System.out.println("=======MATERIA========= "+obj.getMaterias().get(0).getNomeMateria());
         anotacaoRepository.save(obj);
         return obj;
     }
@@ -61,7 +70,12 @@ public class AnotacaoService {
         return anotacaoRepository.findAll(pageRequest);
     }
 
-    public Anotacao fromDTO(AnotacaoDTO objDTO) {
-        return new Anotacao(objDTO.getId(), objDTO.getNomeAnotacao(), objDTO.getMaterias());
+    public Anotacao fromDTO(AnotacaoNewDTO objDTO) {
+//        Materia materia = new Materia(objDTO.getIdMateria(), null);
+        UserSS user = UserService.authnticated();
+        Usuario usuario = usuarioService.find(user.getId());
+        objDTO.setUsuario(usuario);
+        Anotacao anotacao = new Anotacao(null, objDTO.getNomeAnotacao(), objDTO.getMaterias(), objDTO.getUsuario());
+        return anotacao;
     }
 }

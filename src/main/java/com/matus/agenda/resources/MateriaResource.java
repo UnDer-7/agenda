@@ -20,7 +20,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.matus.agenda.domain.Materia;
 import com.matus.agenda.dto.MateriaDTO;
-import com.matus.agenda.dto.MateriaNewDTO;
 import com.matus.agenda.services.MateriaService;
 
 @RestController
@@ -29,17 +28,16 @@ public class MateriaResource {
 	
 	@Autowired
 	private MateriaService materiaService;
-	
+
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id){
 		Materia obj = materiaService.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@Valid @RequestBody MateriaNewDTO objDTO){
-		Materia obj = materiaService.fromDTO(objDTO);
+	public ResponseEntity<Void> insert(@Valid @RequestBody MateriaDTO dto){
+		Materia obj = materiaService.fromDTO(dto);
 		obj = materiaService.insert(obj);
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -53,13 +51,14 @@ public class MateriaResource {
 		obj = materiaService.update(obj);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		materiaService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
+    @PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<MateriaDTO>> findAll(){
 		List<Materia> list = materiaService.findAll();

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.matus.agenda.domain.enums.Perfil;
 
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -27,16 +30,20 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(unique=true)
+    @NotEmpty(message="Campo Login obrigatorio")
     String login;
+    @NotEmpty(message="Campo Senha obrigatorio")
     String senha;
 
-    @JsonIgnore
+//    @JsonIgnore
     @OneToMany(mappedBy = "usuario")
     private List<Materia> materias = new ArrayList<>();
 
     @OneToMany(mappedBy = "usuario")
     private List<Anotacao> anotacaos = new ArrayList<>();
 
+//    @NotBlank
     @ElementCollection(fetch= FetchType.EAGER)
     @CollectionTable(name = "PERFIS")
     private Set<Integer> perfis = new HashSet<>();

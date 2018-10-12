@@ -33,9 +33,10 @@ public class DBService {
         Usuario u1 = new Usuario("Mateus",pe.encode("123"));
 
         Usuario u2 = new Usuario("UnDer7",pe.encode("123"));
-        u2.addPerfil(Perfil.ADMIN);
 
-        usuarioRepository.saveAll(Arrays.asList(u1,u2));
+        Usuario u3 = new Usuario("admin",pe.encode("admin"));
+        u3.addPerfil(Perfil.ADMIN);
+        usuarioRepository.saveAll(Arrays.asList(u1,u2,u3));
 
         Materia mat1 = new Materia(null, "Eng. II", u1);
         Materia mat2 = new Materia(null, "Projeto II",u2);

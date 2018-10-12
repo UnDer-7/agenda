@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.validation.constraints.NotEmpty;
 
 import com.matus.agenda.domain.Materia;
+import com.matus.agenda.domain.Usuario;
 
 public class MateriaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -12,6 +13,8 @@ public class MateriaDTO implements Serializable {
 	private Integer id;
 	@NotEmpty(message="Campo obrigatorio")
 	private String nomeMateria;
+
+    private Usuario usuario;
 
 	public MateriaDTO() {
 	}
@@ -36,4 +39,12 @@ public class MateriaDTO implements Serializable {
 	public void setNomeMateria(String nomeMateria) {
 		this.nomeMateria = nomeMateria;
 	}
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
 }

@@ -1,7 +1,9 @@
 package com.matus.agenda.resources;
 
 import com.matus.agenda.domain.Anotacao;
+import com.matus.agenda.domain.Materia;
 import com.matus.agenda.dto.AnotacaoDTO;
+import com.matus.agenda.dto.AnotacaoNewDTO;
 import com.matus.agenda.services.AnotacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -42,7 +44,7 @@ public class AnotacaoResource {
 		]
     }
     */
-    public ResponseEntity<Void> insert(@Valid @RequestBody AnotacaoDTO objDTO) {
+    public ResponseEntity<Void> insert(@Valid @RequestBody AnotacaoNewDTO objDTO) {
         Anotacao obj = anotacaoService.fromDTO(objDTO);
         anotacaoService.insert(obj);
 
@@ -51,7 +53,7 @@ public class AnotacaoResource {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Void> update(@Valid @RequestBody AnotacaoDTO objDTO, @PathVariable Integer id) {
+    public ResponseEntity<Void> update(@Valid @RequestBody AnotacaoNewDTO objDTO, @PathVariable Integer id) {
         Anotacao obj = anotacaoService.fromDTO(objDTO);
         obj.setId(id);
         obj = anotacaoService.update(obj);

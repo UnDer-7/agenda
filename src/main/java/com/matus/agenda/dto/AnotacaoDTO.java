@@ -20,10 +20,11 @@ public class AnotacaoDTO implements Serializable{
 	public AnotacaoDTO() {
 	}
 
-	public AnotacaoDTO(Integer id, String nomeAnotacao) {
+	public AnotacaoDTO(Integer id, String nomeAnotacao, List<Materia> materias) {
 		super();
 		this.id = id;
 		this.nomeAnotacao = nomeAnotacao;
+		this.materias = materias;
 	}
 	public AnotacaoDTO(Anotacao obj){
 		this.id = obj.getId();
