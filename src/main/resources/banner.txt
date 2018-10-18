@@ -1,0 +1,45 @@
+${AnsiColor.BRIGHT_GREEN}
+ ________________________________________________________________________________________________________________________________________________________________${AnsiColor.BLUE}
+  /$$$$$$   /$$$$$$  /$$$$$$$$ /$$   /$$ /$$$$$$$   /$$$$$$
+ /$$__  $$ /$$__  $$| $$_____/| $$$ | $$| $$__  $$ /$$__  $$
+| $$  \ $$| $$  \__/| $$      | $$$$| $$| $$  \ $$| $$  \ $$
+| $$$$$$$$| $$ /$$$$| $$$$$   | $$ $$ $$| $$  | $$| $$$$$$$$
+| $$__  $$| $$|_  $$| $$__/   | $$  $$$$| $$  | $$| $$__  $$
+| $$  | $$| $$  \ $$| $$      | $$\  $$$| $$  | $$| $$  | $$
+| $$  | $$|  $$$$$$/| $$$$$$$$| $$ \  $$| $$$$$$$/| $$  | $$
+|__/  |__/ \______/ |________/|__/  \__/|_______/ |__/  |__/
+${AnsiColor.BRIGHT_YELLOW}
+   /$$        /$$$$$$
+ /$$$$       /$$$_  $$
+|_  $$      | $$$$\ $$
+  | $$      | $$ $$ $$
+  | $$      | $$\ $$$$
+  | $$      | $$ \ $$$
+ /$$$$$$ /$$|  $$$$$$/
+|______/|__/ \______/
+ ${AnsiColor.BRIGHT_BLACK}
+                  ...     ${AnsiColor.RED}                        ${AnsiColor.BRIGHT_BLACK}
+                 ;::::;   ${AnsiColor.RED}                          ${AnsiColor.BRIGHT_BLACK}
+               ;::::; :;  ${AnsiColor.RED}                         ${AnsiColor.BRIGHT_BLACK}
+             ;:::::'   :; ${AnsiColor.RED}                         ${AnsiColor.BRIGHT_BLACK}
+            ;:::::;     ;. ${AnsiColor.RED}                        ${AnsiColor.BRIGHT_BLACK}
+           ,:::::'       ;           OOO\ ${AnsiColor.RED}         ${AnsiColor.BRIGHT_BLACK}
+           ::::::;       ;          OOOOO\ ${AnsiColor.BRIGHT_RED}        ${AnsiColor.BRIGHT_BLACK}
+           ;:::::;       ;         OOOOOOOO  ${AnsiColor.BRIGHT_RED}      ${AnsiColor.BRIGHT_BLACK}
+          ,;::::::;     ;'         / OOOOOOO  ${AnsiColor.BRIGHT_RED}     ${AnsiColor.BRIGHT_BLACK}
+        ;:::::::::`. ,,,;.        /  / DOOOOOO ${AnsiColor.BRIGHT_RED}    ${AnsiColor.BRIGHT_BLACK}
+      .';:::::::::::::::::;,     /  /     DOOOO ${AnsiColor.BRIGHT_RED}   ${AnsiColor.BRIGHT_BLACK}
+     ,::::::;::::::;;;;::::;,   /  /        DOOO ${AnsiColor.BRIGHT_RED}  ${AnsiColor.BRIGHT_BLACK}
+    ;`::::::`'::::::;;;::::: ,#/  /          DOOO ${AnsiColor.BRIGHT_RED} ${AnsiColor.BRIGHT_BLACK}
+    :`:::::::`;::::::;;::: ;::#  /            DOOO${AnsiColor.BRIGHT_RED} ${AnsiColor.BRIGHT_BLACK}
+    ::`:::::::`;:::::::: ;::::# /              DOO${AnsiColor.BRIGHT_RED} ${AnsiColor.BRIGHT_BLACK}
+    `:`:::::::`;:::::: ;::::::#/               DOO${AnsiColor.BRIGHT_RED} ${AnsiColor.BRIGHT_BLACK}
+     :::`:::::::`;; ;:::::::::##                OO${AnsiColor.BRIGHT_RED} ${AnsiColor.BRIGHT_BLACK}
+     ::::`:::::::`;::::::::;:::#                OO${AnsiColor.BRIGHT_RED} ${AnsiColor.BRIGHT_BLACK}
+     `:::::`::::::::::::;'`:;::#                O ${AnsiColor.BRIGHT_RED} ${AnsiColor.BRIGHT_BLACK}
+      `:::::`::::::::;' /  / `:#                  ${AnsiColor.BRIGHT_RED} ${AnsiColor.BRIGHT_BLACK}
+       ::::::`:::::;'  /  /   `#
+${AnsiColor.BRIGHT_MAGENTA}ASCII text font: ${AnsiColor.RED}Big Money-ne
+${AnsiColor.BRIGHT_MAGENTA}brought to you by: ${AnsiColor.RED}UnDer7
+${AnsiColor.BRIGHT_MAGENTA}Spring boot release: ${AnsiColor.RED}${spring-boot.version}${AnsiColor.BRIGHT_GREEN}
+________________________________________________________________________________________________________________________________________________________________
